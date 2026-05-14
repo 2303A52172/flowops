@@ -1,12 +1,5 @@
 [build]
-builder = "NIXPACKS"
+builder = "nixpacks"
 
 [deploy]
-startCommand = "npm start"
-healthcheckPath = "/health"
-healthcheckTimeout = 30
-restartPolicyType = "on_failure"
-restartPolicyMaxRetries = 5
-
-[[services]]
-name = "flowops-api"
+startCommand = "node src/server.js"
