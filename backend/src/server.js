@@ -23,12 +23,11 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/team', teamRoutes);
 
-// Serve frontend static files
-app.use(express.static(path.join(__dirname, '../../../frontend')));
+// NEW - correct
+app.use(express.static(path.join(__dirname, '../../frontend')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../../frontend/index.html'));
+  res.sendFile(path.join(__dirname, '../../frontend/index.html'));
 });
-
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
