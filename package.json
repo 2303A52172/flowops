@@ -1,0 +1,12 @@
+{
+  "name": "flowops",
+  "version": "1.0.0",
+  "description": "FlowOps — Team Task Manager (Full Stack)",
+  "private": true,
+  "scripts": {
+    "install:backend": "cd backend && npm install",
+    "start:backend": "cd backend && npm start",
+    "dev:backend": "cd backend && npm run dev",
+    "setup": "cd backend && npm install && cp -n .env.example .env && echo '✅ Setup done! Edit backend/.env then run: npm run dev:backend'"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "folders": [
+    { "name": "📁 FlowOps Root", "path": "." },
+    { "name": "🌐 Frontend", "path": "./frontend" },
+    { "name": "⚙️  Backend", "path": "./backend" }
+  ],
+  "settings": {
+    "editor.fontSize": 14,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.DS_Store": true
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+      "package.json": "package-lock.json, .env*, railway.toml, .gitignore",
+      "*.js": "${capture}.test.js"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "ms-vscode.live-server",
+      "formulahendry.auto-close-tag"
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "▶ Run Backend",
+        "program": "${workspaceFolder}/backend/src/server.js",
+        "cwd": "${workspaceFolder}/backend",
+        "envFile": "${workspaceFolder}/backend/.env"
+      }
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Install Backend Dependencies",
+        "type": "shell",
+        "command": "cd backend && npm install",
+        "group": "build"
+      },
+      {
+        "label": "Start Backend",
+        "type": "shell",
+        "command": "cd backend && npm run dev",
+        "group": "test",
+        "isBackground": true
+      }
+    ]
+  }
+}
