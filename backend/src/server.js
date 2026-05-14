@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { initDB } = require('./db');
 const authRoutes = require('./routes/auth');
 const projectRoutes = require('./routes/projects');
@@ -16,14 +17,17 @@ app.use(express.json());
 // Health check
 app.get('/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
 
-// Routes
+// API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/team', teamRoutes);
 
-// 404
-app.use((req, res) => res.status(404).json({ error: 'Route not found' }));
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, '../../../frontend')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../../frontend/index.html'));
+});
 
 // Error handler
 app.use((err, req, res, next) => {
