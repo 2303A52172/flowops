@@ -1,2 +1,2 @@
 [deploy]
-startCommand = "npx serve@14 . -p $PORT --no-clipboard"
+startCommand = "npx serve@14 . -l $PORT"
